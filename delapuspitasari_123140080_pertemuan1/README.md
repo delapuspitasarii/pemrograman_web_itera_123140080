@@ -1,6 +1,3 @@
-### NAMA  : Dela Puspita Sari
-### NIM   : 123140080
-
 # Aplikasi Kasir & Kalkulator Keuangan (Mini POS)
 
 ## Deskripsi
@@ -72,3 +69,93 @@ function simpanKeLocalStorage() {
   localStorage.setItem("keranjangBelanja", JSON.stringify(keranjang));
 }
 
+Fungsi penyimpanan dipanggil setiap kali terjadi perubahan data (tambah, hapus, atau reset), sedangkan pemuatan data dipanggil saat aplikasi pertama kali dimuat. Data disimpan dalam format JSON string menggunakan `JSON.stringify()` dan diubah kembali menjadi array objek menggunakan `JSON.parse()`.
+
+### Validasi Form
+Validasi form dilakukan pada sisi *client* untuk memastikan data yang diinput oleh pengguna sesuai dengan kriteria yang ditentukan. Berikut adalah implementasi validasi form:
+
+```javascript
+function validasiInput() {
+  let isValid = true;
+  const nama = inputNama.value.trim();
+  const harga = parseFloat(inputHarga.value);
+  const qty = parseInt(inputQty.value);
+
+  // Validasi Nama Barang (minimal 3 karakter)
+  if (nama.length < 3) {
+    errorNama.classList.remove("hidden");
+    inputNama.classList.add("input-error");
+    isValid = false;
+  } else {
+    errorNama.classList.add("hidden");
+    inputNama.classList.remove("input-error");
+  }
+
+  // Validasi Harga Satuan (harus angka & minimal Rp 500)
+  if (isNaN(harga) || harga < 500) {
+    errorHarga.classList.remove("hidden");
+    inputHarga.classList.add("input-error");
+    isValid = false;
+  } else {
+    errorHarga.classList.add("hidden");
+    inputHarga.classList.remove("input-error");
+  }
+
+  // Validasi Jumlah / Qty (minimal 1)
+  if (isNaN(qty) || qty < 1) {
+    errorQty.classList.remove("hidden");
+    inputQty.classList.add("input-error");
+    isValid = false;
+  } else {
+    errorQty.classList.add("hidden");
+    inputQty.classList.remove("input-error");
+  }
+
+  return isValid;
+}
+
+
+Validasi yang diterapkan meliputi:
+- Nama barang tidak boleh kurang dari 3 karakter
+- Harga satuan wajib berupa angka positif dan minimal Rp 500
+- Jumlah (qty) wajib berupa angka bulat minimal 1
+
+Jika terdapat kesalahan input, pesan error akan ditampilkan di bawah field yang bermasalah dan field tersebut akan ditandai dengan border berwarna merah. Proses penyimpanan data tidak akan dilanjutkan hingga semua input valid
+
+### Algoritma Kalkulator Keuangan & Pembayaran
+Kalkulator keuangan bekerja secara real-time setiap ada perubahan input nominal pembayaran oleh kasir:
+
+function hitungPembayaran(totalAkhir) {
+  const uangBayar = parseFloat(inputUangBayar.value) || 0;
+
+  if (inputUangBayar.value === "") {
+    textKembalian.innerText = "Rp 0";
+    pesanKembalian.classList.add("hidden");
+    return;
+  }
+
+  const kembalian = uangBayar - totalAkhir;
+
+  if (kembalian < 0) {
+    textKembalian.innerText = formatRupiah(kembalian);
+    textKembalian.className = "text-red-500 font-bold";
+    pesanKembalian.classList.remove("hidden");
+  } else {
+    textKembalian.innerText = formatRupiah(kembalian);
+    textKembalian.className = "text-green-600 font-bold";
+    pesanKembalian.classList.add("hidden");
+  }
+}
+
+Alur kalkulasinya meliputi:
+- Menghitung kembalian dengan pengurangan uangBayar - totalAkhir
+- Apabila nominal pembayaran kurang (kembalian < 0), teks akan berwarna merah dan pesan peringatan dimunculkan
+- Apabila nominal pembayaran mencukupi, teks kembalian akan berwarna hijau dan peringatan disembunyikan
+
+
+## Informasi Pembuat
+Nama: Dela Puspita Sari
+NIM: 123140080
+Mata Kuliah: Pemrograman Web RB
+Dosen Pengampu: Muhammad Habib Algifari, S.Kom., M.TI.
+Asisten Praktikum: Muhammad Daffa Hakim Matondang
