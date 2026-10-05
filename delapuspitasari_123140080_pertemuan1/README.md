@@ -22,15 +22,15 @@ Aplikasi Kasir & Kalkulator Keuangan Sederhana (Mini POS) adalah aplikasi berbas
 ## Screenshot Aplikasi
 
 ### Tampilan Utama & Form Input
-![Tampilan Utama] screenshoots/Tampilan utama & Form input.png
+![Tampilan Utama](<screenshots/Tampilan utama & Form input.png>)  
 *Form input barang, tabel daftar keranjang belanja, serta modul ringkasan pembayaran.*
 
 ### Form Validasi Error
-![Form Validasi Error] screenshots/Form Validasi Error.png 
+![Form Validasi Error](<screenshots/Form Validasi Error.png>)  
 *Pesan peringatan yang muncul ketika input nama barang, harga, atau kuantitas tidak sesuai dengan kriteria validasi.*
 
 ### Fitur Kalkulator Pembayaran & Diskon
-![Kalkulator Pembayaran & Diskon] sreenshots/Fitur Kalkulator Pembayaran & Diskon.png
+![Kalkulator Pembayaran & Diskon](<screenshots/Fitur Kalkulator Pembayaran & Diskon.png>)  
 *Perhitungan otomatis nilai diskon, total akhir yang harus dibayar, serta kalkulasi uang kembalian.*
 
 ## Cara Menjalankan Aplikasi
