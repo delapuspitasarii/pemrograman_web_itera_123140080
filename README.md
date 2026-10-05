@@ -1,3 +1,6 @@
+### NAMA  : Dela Puspita Sari
+### NIM   : 123140080
+
 # Aplikasi Kasir & Kalkulator Keuangan (Mini POS)
 
 ## Deskripsi
