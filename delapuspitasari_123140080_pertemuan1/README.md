@@ -68,6 +68,7 @@ let keranjang = JSON.parse(localStorage.getItem("keranjangBelanja")) || [];
 function simpanKeLocalStorage() {
   localStorage.setItem("keranjangBelanja", JSON.stringify(keranjang));
 }
+```
 
 Fungsi penyimpanan dipanggil setiap kali terjadi perubahan data (tambah, hapus, atau reset), sedangkan pemuatan data dipanggil saat aplikasi pertama kali dimuat. Data disimpan dalam format JSON string menggunakan `JSON.stringify()` dan diubah kembali menjadi array objek menggunakan `JSON.parse()`.
 
@@ -113,18 +114,19 @@ function validasiInput() {
 
   return isValid;
 }
-
+```
 
 Validasi yang diterapkan meliputi:
-- Nama barang tidak boleh kurang dari 3 karakter
-- Harga satuan wajib berupa angka positif dan minimal Rp 500
-- Jumlah (qty) wajib berupa angka bulat minimal 1
+1. Nama barang tidak boleh kurang dari 3 karakter
+2. Harga satuan wajib berupa angka positif dan minimal Rp 500
+3. Jumlah (*qty*) wajib berupa angka bulat minimal 1
 
-Jika terdapat kesalahan input, pesan error akan ditampilkan di bawah field yang bermasalah dan field tersebut akan ditandai dengan border berwarna merah. Proses penyimpanan data tidak akan dilanjutkan hingga semua input valid
+Jika terdapat kesalahan input, pesan *error* akan ditampilkan di bawah *field* yang bermasalah dan *field* tersebut akan ditandai dengan border berwarna merah. Proses penyimpanan data tidak akan dilanjutkan hingga semua input valid.
 
 ### Algoritma Kalkulator Keuangan & Pembayaran
-Kalkulator keuangan bekerja secara real-time setiap ada perubahan input nominal pembayaran oleh kasir:
+Kalkulator keuangan bekerja secara *real-time* setiap ada perubahan input nominal pembayaran oleh kasir:
 
+```javascript
 function hitungPembayaran(totalAkhir) {
   const uangBayar = parseFloat(inputUangBayar.value) || 0;
 
@@ -146,16 +148,16 @@ function hitungPembayaran(totalAkhir) {
     pesanKembalian.classList.add("hidden");
   }
 }
+```
 
 Alur kalkulasinya meliputi:
-- Menghitung kembalian dengan pengurangan uangBayar - totalAkhir
-- Apabila nominal pembayaran kurang (kembalian < 0), teks akan berwarna merah dan pesan peringatan dimunculkan
-- Apabila nominal pembayaran mencukupi, teks kembalian akan berwarna hijau dan peringatan disembunyikan
-
+1. Menghitung kembalian dengan pengurangan `uangBayar - totalAkhir`
+2. Apabila nominal pembayaran kurang (`kembalian < 0`), teks akan berwarna merah dan pesan peringatan dimunculkan
+3. Apabila nominal pembayaran mencukupi, teks kembalian akan berwarna hijau dan peringatan disembunyikan
 
 ## Informasi Pembuat
-Nama: Dela Puspita Sari
-NIM: 123140080
-Mata Kuliah: Pemrograman Web RB
-Dosen Pengampu: Muhammad Habib Algifari, S.Kom., M.TI.
-Asisten Praktikum: Muhammad Daffa Hakim Matondang
+- **Nama:** Dela Puspita Sari
+- **NIM:** 123140080
+- **Mata Kuliah:** Pemrograman Web RB
+- **Dosen Pengampu:** Muhammad Habib Algifari, S.Kom., M.TI.
+- **Asisten Praktikum:** Muhammad Daffa Hakim Matondang
