@@ -1,3 +1,12 @@
+## Informasi Pembuat
+- **Nama:** Dela Puspita Sari
+- **NIM:** 123140080
+- **Mata Kuliah / Kelas Praktikum:** Pemrograman Web / RB
+- **Dosen Pengampu:** Muhammad Habib Algifari, S.Kom., M.TI.
+- **Asisten Praktikum:** Muhammad Daffa Hakim Matondang
+
+
+
 # Aplikasi Kasir & Kalkulator Keuangan (Mini POS)
 
 ## Deskripsi
@@ -155,9 +164,3 @@ Alur kalkulasinya meliputi:
 2. Apabila nominal pembayaran kurang (`kembalian < 0`), teks akan berwarna merah dan pesan peringatan dimunculkan
 3. Apabila nominal pembayaran mencukupi, teks kembalian akan berwarna hijau dan peringatan disembunyikan
 
-## Informasi Pembuat
-- **Nama:** Dela Puspita Sari
-- **NIM:** 123140080
-- **Mata Kuliah / Kelas Praktikum:** Pemrograman Web / RB
-- **Dosen Pengampu:** Muhammad Habib Algifari, S.Kom., M.TI.
-- **Asisten Praktikum:** Muhammad Daffa Hakim Matondang
