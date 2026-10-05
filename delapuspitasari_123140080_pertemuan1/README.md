@@ -158,6 +158,6 @@ Alur kalkulasinya meliputi:
 ## Informasi Pembuat
 - **Nama:** Dela Puspita Sari
 - **NIM:** 123140080
-- **Mata Kuliah:** Pemrograman Web RB
+- **Mata Kuliah / Kelas Praktikum:** Pemrograman Web / RB
 - **Dosen Pengampu:** Muhammad Habib Algifari, S.Kom., M.TI.
 - **Asisten Praktikum:** Muhammad Daffa Hakim Matondang
