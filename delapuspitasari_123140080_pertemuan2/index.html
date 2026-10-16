@@ -98,6 +98,7 @@
                 <option value="Tugas Besar">Tugas Besar</option>
                 <option value="Kuis">Kuis</option>
                 <option value="Ujian">Ujian</option>
+                <option value="Lainnya">Lainnya</option>
               </select>
             </div>
             <div>
@@ -134,16 +135,27 @@
                 <option value="Rabu">Rabu</option>
                 <option value="Kamis">Kamis</option>
                 <option value="Jumat">Jumat</option>
+                <option value="Sabtu">Sabtu</option>
+                <option value="Minggu">Minggu</option>
               </select>
             </div>
             <div>
-              <label class="block text-xs font-semibold mb-1">Jam</label>
-              <input type="text" id="schedTime" required placeholder="08:00 - 10:00" class="form-input">
+              <label class="block text-xs font-semibold mb-1">Metode</label>
+              <select id="schedMode" class="form-input">
+                <option value="Luring">🏫 Luring</option>
+                <option value="Daring">💻 Daring</option>
+              </select>
             </div>
           </div>
-          <div>
-            <label class="block text-xs font-semibold mb-1">Ruangan / Link</label>
-            <input type="text" id="schedRoom" required placeholder="GKU 1 / Zoom" class="form-input">
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="block text-xs font-semibold mb-1">Jam Kuliah</label>
+              <input type="text" id="schedTime" required placeholder="08:00 - 10:00" class="form-input">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold mb-1">Ruangan / Link</label>
+              <input type="text" id="schedRoom" required placeholder="GKU 1 / Zoom" class="form-input">
+            </div>
           </div>
           <button type="submit" class="btn-primary">Tambah Jadwal</button>
         </form>
