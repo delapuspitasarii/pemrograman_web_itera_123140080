@@ -77,4 +77,5 @@ Berikut adalah dokumentasi antarmuka aplikasi ITERA Academic Command Center:
 
 ### 5. Modul Jadwal Kuliah & Catatan Cepat
 ![Jadwal dan Catatan](screenshots/screenshot-schedule-notes.png)
+
 *Tampilan pengelolaan jadwal kuliah mingguan dengan opsi status Daring/Luring serta modul catatan cepat harian.*
