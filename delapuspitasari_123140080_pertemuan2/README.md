@@ -31,13 +31,13 @@ Proyek ini dikembangkan menggunakan kombinasi teknologi *front-end* modern:
 ## ✨ Fitur Aplikasi Utama
 Berikut adalah daftar fungsionalitas inti yang ditawarkan oleh Dashboard ini:
 
-- ✅ **Daftar Tugas Interaktif**: Fitur CRUD (Create, Read, Update, Delete) tugas dilengkapi status penyelesaian, skala prioritas (Tinggi, Sedang, Rendah), dan tanggal tenggat (*deadline*).
-- 📅 **Manajemen Jadwal Kuliah**: Pengelolaan daftar mata kuliah harian (Senin–Minggu) dengan opsi metode pembelajaran (🏫 Luring / 💻 Daring) dan lokasi ruangan.
-- 🗒️ **Catatan Pribadi Sederhana**: Modul pencatatan cepat untuk menyimpan gagasan atau pengingat penting perkuliahan.
-- 📊 **Live Progress Bar**: Indikator persentase otomatis yang menghitung tingkat penyelesaian seluruh tugas secara *real-time*.
-- 🔍 **Pencarian & Pengurutan Dinamis**: Kolom pencarian kata kunci lintas modul serta pengurutan tugas berdasarkan tanggal tenggat atau prioritas.
-- 🎨 **Toggle Theme (Mode Gelap/Terang)**: Penyesuaian tampilan visual (Dark/Light Mode) yang tersimpan otomatis di penyimpanan lokal.
-- 🌤️ **Widget Cuaca ITERA**: Menampilkan suhu dan kecepatan angin *real-time* di wilayah Lampung Selatan.
+- **Daftar Tugas Interaktif**: Fitur CRUD (Create, Read, Update, Delete) tugas dilengkapi status penyelesaian, skala prioritas (Tinggi, Sedang, Rendah), dan tanggal tenggat (*deadline*).
+- **Manajemen Jadwal Kuliah**: Pengelolaan daftar mata kuliah harian (Senin–Minggu) dengan opsi metode pembelajaran (🏫 Luring / 💻 Daring) dan lokasi ruangan.
+- **Catatan Pribadi Sederhana**: Modul pencatatan cepat untuk menyimpan gagasan atau pengingat penting perkuliahan.
+- **Live Progress Bar**: Indikator persentase otomatis yang menghitung tingkat penyelesaian seluruh tugas secara *real-time*.
+- **Pencarian & Pengurutan Dinamis**: Kolom pencarian kata kunci lintas modul serta pengurutan tugas berdasarkan tanggal tenggat atau prioritas.
+- **Toggle Theme (Mode Gelap/Terang)**: Penyesuaian tampilan visual (Dark/Light Mode) yang tersimpan otomatis di penyimpanan lokal.
+- **Widget Cuaca ITERA**: Menampilkan suhu dan kecepatan angin *real-time* di wilayah Lampung Selatan.
 
 ---
 
