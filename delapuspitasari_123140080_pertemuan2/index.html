@@ -25,9 +25,8 @@
 <body class="bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-100 min-h-screen transition-colors duration-300 p-4 md:p-8">
   <div class="max-w-7xl mx-auto space-y-6">
 
-    <!-- Header & Info Widget Bar -->
+    <!-- Header & Profile Banner -->
     <header class="grid grid-cols-1 lg:grid-cols-4 gap-4">
-      <!-- Profile Banner -->
       <div class="lg:col-span-3 bg-gradient-to-r from-sky-600 to-indigo-700 dark:from-slate-800 dark:to-indigo-950 text-white p-6 rounded-2xl shadow-lg flex flex-col justify-between">
         <div class="flex justify-between items-start">
           <div>
@@ -44,7 +43,7 @@
         </div>
       </div>
 
-      <!-- Live Weather Widget (ITERA Coords) -->
+      <!-- Live Weather Widget (ITERA) -->
       <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-md border border-slate-200 dark:border-slate-700 flex flex-col justify-between">
         <div class="flex justify-between items-center">
           <span class="text-xs font-bold text-slate-400 dark:text-slate-400 uppercase tracking-wider">Cuaca Kampus</span>
@@ -57,7 +56,7 @@
       </div>
     </header>
 
-    <!-- Global Progress & Search Bar -->
+    <!-- Progress Indicator & Search Bar -->
     <section class="bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-md border border-slate-200 dark:border-slate-700 flex flex-col md:flex-row items-center justify-between gap-4">
       <div class="w-full md:w-1/2 flex items-center gap-3">
         <div class="flex-1 bg-slate-100 dark:bg-slate-700 h-3 rounded-full overflow-hidden">
@@ -72,10 +71,10 @@
       </div>
     </section>
 
-    <!-- Main Workspace Grid -->
+    <!-- Main Content Workspace -->
     <main class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-      <!-- Form Panel Left -->
+      <!-- Form Panel (Kiri) -->
       <section class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-md border border-slate-200 dark:border-slate-700 h-fit space-y-4">
         <!-- Form Selector Tabs -->
         <div class="flex border-b border-slate-200 dark:border-slate-700 text-xs font-bold">
@@ -89,7 +88,7 @@
           <input type="hidden" id="taskId">
           <div>
             <label class="block text-xs font-semibold mb-1">Judul Tugas / Matkul</label>
-            <input type="text" id="taskTitle" required placeholder="Contoh: Laporan Praktikum JS" class="form-input">
+            <input type="text" id="taskTitle" required placeholder="Contoh: Laporan Praktikum Pemweb" class="form-input">
           </div>
           <div class="grid grid-cols-2 gap-2">
             <div>
@@ -163,10 +162,10 @@
         </form>
       </section>
 
-      <!-- Display Workspace Right -->
+      <!-- Displays Area (Kanan) -->
       <section class="lg:col-span-2 space-y-6">
         
-        <!-- Module 1: To-Do & Task Manager -->
+        <!-- Module 1: Daftar Tugas -->
         <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-md border border-slate-200 dark:border-slate-700">
           <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-4">
             <div>
@@ -189,16 +188,16 @@
           <div id="taskList" class="space-y-3"></div>
         </div>
 
-        <!-- Two Column Bottom Grid: Schedule & Notes -->
+        <!-- Module 2 & 3: Grid Jadwal & Catatan -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           
-          <!-- Module 2: Schedule -->
+          <!-- Module 2: Jadwal Kuliah -->
           <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-md border border-slate-200 dark:border-slate-700">
             <h2 class="text-md font-bold mb-3">📅 Jadwal Kuliah</h2>
             <div id="scheduleList" class="space-y-2"></div>
           </div>
 
-          <!-- Module 3: Quick Notes -->
+          <!-- Module 3: Catatan Cepat -->
           <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-md border border-slate-200 dark:border-slate-700">
             <h2 class="text-md font-bold mb-3">🗒️ Catatan Cepat</h2>
             <div id="noteList" class="space-y-2"></div>
