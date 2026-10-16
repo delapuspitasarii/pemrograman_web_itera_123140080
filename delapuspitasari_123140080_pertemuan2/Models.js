@@ -23,12 +23,13 @@ export class TaskItem {
   toJSON = () => ({ ...this });
 }
 
-// Class Model Schedule
+// Class Model Schedule (Ditambahkan properti mode: Luring / Daring)
 export class ScheduleItem {
-  constructor({ id = Date.now().toString(), title, day, time, room }) {
+  constructor({ id = Date.now().toString(), title, day, mode = "Luring", time, room }) {
     this.id = id;
     this.title = title;
     this.day = day;
+    this.mode = mode;
     this.time = time;
     this.room = room;
   }
