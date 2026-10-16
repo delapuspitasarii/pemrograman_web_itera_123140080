@@ -31,7 +31,6 @@ export class DashboardApp {
     this.setupEventListeners();
     this.setupFormTabs();
 
-    // Paralel Async Fetch API
     await Promise.all([
       this.fetchWeather(),
       this.fetchQuote()
@@ -40,7 +39,7 @@ export class DashboardApp {
     this.renderAll();
   };
 
-  // --- THEME MANAGEMENT ---
+  // --- MANAJEMEN TEMA ---
   initTheme = () => {
     const savedTheme = localStorage.getItem(this.#THEME_KEY) || 'light';
     if (savedTheme === 'dark') document.documentElement.classList.add('dark');
@@ -82,7 +81,7 @@ export class DashboardApp {
     }
   };
 
-  // --- LOCALSTORAGE & DATA MANAGEMENT ---
+  // --- LOCALSTORAGE & PENGELOLAAN DATA ---
   loadDataFromStorage = () => {
     const rawTasks = JSON.parse(localStorage.getItem(this.#TASKS_KEY) || '[]');
     const rawSched = JSON.parse(localStorage.getItem(this.#SCHED_KEY) || '[]');
@@ -94,8 +93,8 @@ export class DashboardApp {
     ];
 
     this.schedules = rawSched.length ? rawSched.map(s => new ScheduleItem({ ...s })) : [
-      new ScheduleItem({ title: 'Pemrograman Web', day: 'Senin', time: '08:00 - 10:00', room: 'GKU 1' }),
-      new ScheduleItem({ title: 'Sistem Operasi', day: 'Rabu', time: '13:00 - 15:00', room: 'Labkom 3' })
+      new ScheduleItem({ title: 'Pemrograman Web', day: 'Senin', mode: 'Luring', time: '08:00 - 10:00', room: 'GKU 1' }),
+      new ScheduleItem({ title: 'Sistem Operasi', day: 'Rabu', mode: 'Daring', time: '13:00 - 15:00', room: 'Zoom' })
     ];
 
     this.notes = rawNotes.length ? rawNotes.map(n => new NoteItem({ ...n })) : [
@@ -111,7 +110,7 @@ export class DashboardApp {
     localStorage.setItem(this.#NOTES_KEY, JSON.stringify(this.notes.map(n => n.toJSON())));
   };
 
-  // --- RENDERING METHODS ---
+  // --- METODE RENDERING ---
   renderAll = () => {
     this.renderTasks();
     this.renderSchedules();
@@ -120,7 +119,11 @@ export class DashboardApp {
   };
 
   updateProgress = () => {
-    if (!this.tasks.length) return;
+    if (!this.tasks.length) {
+      this.progressBarEl.style.width = '0%';
+      this.progressTextEl.innerText = '0% Selesai';
+      return;
+    }
     const completed = this.tasks.filter(t => t.completed).length;
     const percentage = Math.round((completed / this.tasks.length) * 100);
     this.progressBarEl.style.width = `${percentage}%`;
@@ -167,8 +170,8 @@ export class DashboardApp {
             </div>
           </div>
           <div class="flex items-center gap-1 shrink-0">
-            <button data-id="${id}" class="task-edit p-1 text-slate-400 hover:text-sky-600">✏️</button>
-            <button data-id="${id}" class="task-del p-1 text-slate-400 hover:text-red-600">🗑️</button>
+            <button data-id="${id}" class="task-edit p-1 text-slate-400 hover:text-sky-600" title="Edit Tugas">✏️</button>
+            <button data-id="${id}" class="task-del p-1 text-slate-400 hover:text-red-600" title="Hapus Tugas">🗑️</button>
           </div>
         </div>
       `;
@@ -181,15 +184,24 @@ export class DashboardApp {
       this.schedListEl.innerHTML = `<p class="text-slate-400 text-xs py-4 text-center">Jadwal kosong.</p>`;
       return;
     }
-    this.schedListEl.innerHTML = filtered.map(({ id, title, day, time, room }) => `
-      <div class="p-3 bg-slate-50 dark:bg-slate-700/50 rounded-xl border border-slate-200 dark:border-slate-600 flex justify-between items-center text-xs">
-        <div>
-          <p class="font-bold text-slate-800 dark:text-slate-200">${title}</p>
-          <p class="text-slate-400">${day} | ${time} (${room})</p>
+    this.schedListEl.innerHTML = filtered.map(({ id, title, day, mode, time, room }) => {
+      const modeStyle = mode === 'Daring' 
+        ? 'bg-sky-100 text-sky-700 dark:bg-sky-950/40 dark:text-sky-300' 
+        : 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300';
+
+      return `
+        <div class="p-3 bg-slate-50 dark:bg-slate-700/50 rounded-xl border border-slate-200 dark:border-slate-600 flex justify-between items-center text-xs">
+          <div>
+            <div class="flex items-center gap-2">
+              <p class="font-bold text-slate-800 dark:text-slate-200">${title}</p>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${modeStyle}">${mode || 'Luring'}</span>
+            </div>
+            <p class="text-slate-400 mt-0.5">${day} | ${time} (${room})</p>
+          </div>
+          <button data-id="${id}" class="sched-del text-slate-400 hover:text-red-500">🗑️</button>
         </div>
-        <button data-id="${id}" class="sched-del text-slate-400 hover:text-red-500">🗑️</button>
-      </div>
-    `).join('');
+      `;
+    }).join('');
   };
 
   renderNotes = () => {
@@ -210,24 +222,37 @@ export class DashboardApp {
     `).join('');
   };
 
-  // --- HANDLERS & LISTENERS ---
-  setupFormTabs = () => {
+  // --- MANAJEMEN TAB & FORM ---
+  switchFormTab = (targetTabId) => {
     const tabs = {
       tabTaskForm: document.getElementById('taskForm'),
       tabScheduleForm: document.getElementById('scheduleForm'),
       tabNoteForm: document.getElementById('noteForm')
     };
 
-    Object.keys(tabs).forEach(tabId => {
-      document.getElementById(tabId).addEventListener('click', (e) => {
-        Object.keys(tabs).forEach(t => {
-          document.getElementById(t).className = 'flex-1 py-2 text-slate-400 hover:text-slate-600';
-          tabs[t].classList.add('hidden');
-        });
-        e.target.className = 'flex-1 py-2 text-sky-600 border-b-2 border-sky-600 font-bold';
-        tabs[tabId].classList.remove('hidden');
-      });
+    Object.keys(tabs).forEach(tId => {
+      const btn = document.getElementById(tId);
+      if (tId === targetTabId) {
+        btn.className = 'flex-1 py-2 text-sky-600 border-b-2 border-sky-600 font-bold';
+        tabs[tId].classList.remove('hidden');
+      } else {
+        btn.className = 'flex-1 py-2 text-slate-400 hover:text-slate-600';
+        tabs[tId].classList.add('hidden');
+      }
     });
+  };
+
+  setupFormTabs = () => {
+    ['tabTaskForm', 'tabScheduleForm', 'tabNoteForm'].forEach(tabId => {
+      document.getElementById(tabId)?.addEventListener('click', () => this.switchFormTab(tabId));
+    });
+  };
+
+  resetTaskForm = () => {
+    this.editingTaskId = null;
+    document.getElementById('taskForm')?.reset();
+    document.getElementById('taskSubmitBtn').innerText = 'Simpan Tugas';
+    document.getElementById('taskCancelBtn')?.classList.add('hidden');
   };
 
   setupEventListeners = () => {
@@ -238,42 +263,53 @@ export class DashboardApp {
       this.renderAll();
     });
 
+    // Form Submit Tugas
     document.getElementById('taskForm')?.addEventListener('submit', (e) => {
       e.preventDefault();
-      const title = document.getElementById('taskTitle').value;
+      const title = document.getElementById('taskTitle').value.trim();
       const category = document.getElementById('taskCategory').value;
       const priority = document.getElementById('taskPriority').value;
       const deadline = document.getElementById('taskDeadline').value;
 
+      if (!title || !deadline) return;
+
       if (this.editingTaskId) {
         const task = this.tasks.find(t => t.id === this.editingTaskId);
         if (task) task.updateDetails({ title, category, priority, deadline });
-        this.editingTaskId = null;
       } else {
         this.tasks = [new TaskItem({ title, category, priority, deadline }), ...this.tasks];
       }
+
       this.saveData();
+      this.resetTaskForm();
       this.renderAll();
-      e.target.reset();
     });
 
+    // Tombol Batal Edit
+    document.getElementById('taskCancelBtn')?.addEventListener('click', () => {
+      this.resetTaskForm();
+    });
+
+    // Form Submit Jadwal
     document.getElementById('scheduleForm')?.addEventListener('submit', (e) => {
       e.preventDefault();
-      const title = document.getElementById('schedTitle').value;
+      const title = document.getElementById('schedTitle').value.trim();
       const day = document.getElementById('schedDay').value;
-      const time = document.getElementById('schedTime').value;
-      const room = document.getElementById('schedRoom').value;
+      const mode = document.getElementById('schedMode').value;
+      const time = document.getElementById('schedTime').value.trim();
+      const room = document.getElementById('schedRoom').value.trim();
 
-      this.schedules.push(new ScheduleItem({ title, day, time, room }));
+      this.schedules.push(new ScheduleItem({ title, day, mode, time, room }));
       this.saveData();
       this.renderSchedules();
       e.target.reset();
     });
 
+    // Form Submit Catatan
     document.getElementById('noteForm')?.addEventListener('submit', (e) => {
       e.preventDefault();
-      const title = document.getElementById('noteTitle').value;
-      const content = document.getElementById('noteContent').value;
+      const title = document.getElementById('noteTitle').value.trim();
+      const content = document.getElementById('noteContent').value.trim();
 
       this.notes.unshift(new NoteItem({ title, content }));
       this.saveData();
@@ -281,45 +317,65 @@ export class DashboardApp {
       e.target.reset();
     });
 
+    // Event Delegation untuk Daftar Tugas (Toggle, Edit, Delete)
     this.taskListEl.addEventListener('click', (e) => {
-      const id = e.target.dataset.id;
-      if (!id) return;
-      if (e.target.classList.contains('task-toggle')) {
+      const toggleBtn = e.target.closest('.task-toggle');
+      const delBtn = e.target.closest('.task-del');
+      const editBtn = e.target.closest('.task-edit');
+
+      if (toggleBtn) {
+        const id = toggleBtn.dataset.id;
         this.tasks.find(t => t.id === id)?.toggleComplete();
-      } else if (e.target.classList.contains('task-del')) {
+        this.saveData();
+        this.renderAll();
+      } else if (delBtn) {
+        const id = delBtn.dataset.id;
         this.tasks = this.tasks.filter(t => t.id !== id);
-      } else if (e.target.classList.contains('task-edit')) {
-        const t = this.tasks.find(t => t.id === id);
-        if (t) {
+        if (this.editingTaskId === id) this.resetTaskForm();
+        this.saveData();
+        this.renderAll();
+      } else if (editBtn) {
+        const id = editBtn.dataset.id;
+        const task = this.tasks.find(t => t.id === id);
+        if (task) {
           this.editingTaskId = id;
-          document.getElementById('taskTitle').value = t.title;
-          document.getElementById('taskCategory').value = t.category;
-          document.getElementById('taskPriority').value = t.priority;
-          document.getElementById('taskDeadline').value = t.deadline;
+          document.getElementById('taskTitle').value = task.title;
+          document.getElementById('taskCategory').value = task.category;
+          document.getElementById('taskPriority').value = task.priority;
+          document.getElementById('taskDeadline').value = task.deadline;
+
+          // Pindah tab ke form tugas dan ubah status tombol
+          this.switchFormTab('tabTaskForm');
+          document.getElementById('taskSubmitBtn').innerText = 'Perbarui Tugas';
+          document.getElementById('taskCancelBtn')?.classList.remove('hidden');
+          document.getElementById('taskTitle').focus();
         }
       }
-      this.saveData();
-      this.renderAll();
     });
 
+    // Event Delegation Hapus Jadwal
     this.schedListEl.addEventListener('click', (e) => {
-      const id = e.target.dataset.id;
-      if (id && e.target.classList.contains('sched-del')) {
+      const delBtn = e.target.closest('.sched-del');
+      if (delBtn) {
+        const id = delBtn.dataset.id;
         this.schedules = this.schedules.filter(s => s.id !== id);
         this.saveData();
         this.renderSchedules();
       }
     });
 
+    // Event Delegation Hapus Catatan
     this.noteListEl.addEventListener('click', (e) => {
-      const id = e.target.dataset.id;
-      if (id && e.target.classList.contains('note-del')) {
+      const delBtn = e.target.closest('.note-del');
+      if (delBtn) {
+        const id = delBtn.dataset.id;
         this.notes = this.notes.filter(n => n.id !== id);
         this.saveData();
         this.renderNotes();
       }
     });
 
+    // Event Filter Status
     document.querySelectorAll('.task-filter-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         document.querySelectorAll('.task-filter-btn').forEach(b => b.classList.remove('filter-active'));
@@ -329,6 +385,7 @@ export class DashboardApp {
       });
     });
 
+    // Event Urutkan Tugas
     document.getElementById('sortTasks')?.addEventListener('change', (e) => {
       this.sortBy = e.target.value;
       this.renderTasks();
