@@ -61,18 +61,22 @@ Berikut adalah dokumentasi antarmuka aplikasi ITERA Academic Command Center:
 
 ### 1. Tampilan Utama
 ![Tampilan Utama](screenshots/screenshot-main.png)
+
 *Menampilkan header profil mahasiswa (Dela Puspita Sari - 123140080), widget cuaca real-time kampus ITERA, kutipan motivasi, indikator progress bar, serta ringkasan tugas.*
 
 ### 2. Penambahan & Edit Tugas
 ![Penambahan dan Edit Tugas](screenshots/screenshot-add-edit.png)
+
 *Antarmuka form interaktif untuk menambah tugas baru atau memperbarui tugas yang sudah ada lengkap dengan pilihan kategori, prioritas, dan tanggal tenggat.*
 
 ### 3. Toggle Theme (Mode Gelap)
 ![Toggle Theme](screenshots/screenshot-darkmode.png)
+
 *Demonstrasi fitur perubahan tema ke Mode Gelap (Dark Mode) untuk kenyamanan penggunaan di kondisi redup cahaya.*
 
 ### 4. Fungsi Pencarian & Pengurutan
 ![Pencarian dan Sorting](screenshots/screenshot-search-sort.png)
+
 *Fitur penyaringan tugas dinamis berdasarkan kata kunci serta pengurutan berdasarkan tingkat prioritas dan tanggal deadline.*
 
 ### 5. Modul Jadwal Kuliah & Catatan Cepat
