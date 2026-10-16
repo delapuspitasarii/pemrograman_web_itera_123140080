@@ -3,7 +3,6 @@
 **Nama**: Dela Puspita Sari  
 **NIM**: 123140080  
 **Kelas**: Praktikum Pemrograman Web RB 
-**Program Studi**: Teknik Informatika - Institut Teknologi Sumatera  
 
 ---
 
