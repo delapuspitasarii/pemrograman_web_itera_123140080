@@ -41,7 +41,7 @@ src/
 └── setupTests.js   # Konfigurasi Vitest
 ```
 
-## Cara menjalankan (lokal)
+## 📁Cara menjalankan (lokal)
 Prasyarat: Node.js (v16+ recommended) dan npm tersedia.
 
 1. Install dependensi:
@@ -63,7 +63,7 @@ npm run test
 npm run build
 npm run preview
 ```
-## Dokumentasi singkat komponen utama
+## 🖼️ Dokumentasi singkat komponen utama
 - BookContext.jsx
   - Export: `BookProvider` dan `useBookContext`.
   - API: Penyedia state buku global dan fungsi manipulasi data buku.
@@ -81,13 +81,13 @@ npm run preview
 - useBookStats.js
   - Custom hook untuk mengkalkulasi total buku, jumlah buku yang selesai dibaca, dan statistik lainnya.
 
-## Cara menambahkan buku baru
+## ✨Cara menambahkan buku baru
 1. Masuk ke halaman **Home**.
 2. Isi formulir pada bagian **BookForm** dengan detail buku (Judul, Penulis, Kategori, Status).
 3. Klik tombol simpan/tambah.
 4. Data buku akan otomatis muncul di **BookList** dan tersimpan di LocalStorage.
 
-## Ringkasan Halaman
+## ✨Ringkasan Halaman
 
 ### Home
 Halaman utama yang berisi form penambahan buku, filter, serta daftar seluruh koleksi buku.
@@ -95,20 +95,18 @@ Halaman utama yang berisi form penambahan buku, filter, serta daftar seluruh kol
 ### Stats
 Halaman statistik yang menyajikan visualisasi/ringkasan data koleksi buku pengguna.
 
-## Lampiran Tangkapan Layar (Screenshot)
+---
 
-1. Tampilan Halaman Utama (Home)
-![Halaman Utama](docs/screenshots/home.png)
-*Menampilkan formulir pendaftaran buku baru, opsi filter/pencarian, dan daftar koleksi buku.*
+## 🖼️ Lampiran Tangkapan Layar (Screenshot)
 
-2. Tampilan Halaman Statistik (Stats)
-![Halaman Statistik](docs/screenshots/stats.png)
-*Menampilkan ringkasan kalkulasi total buku dan status keterbacaan menggunakan custom hook.*
+### 1. Halaman Utama (Home)
+![Halaman Utama](screenshots/home.png)
 
-3. Bukti Hasil Pengujian Unit (Unit Testing - Vitest)
-![Hasil Testing Terminal](docs/screenshots/testing.png)
-*Tangkapan layar terminal saat menjalankan `npm run test` dengan seluruh pengujian berstatus PASS.*
+### 2. Halaman Statistik (Stats)
+![Halaman Statistik](screenshots/stats.png)
 
+### 3. Hasil Testing Vitest (Terminal)
+![Hasil Testing Terminal](screenshots/testing.png)
 ## Catatan pengembangan dan saran
 - Menambahkan fitur pencarian buku berbasis kata kunci judul/penulis secara real-time.
 - Menambahkan konfirmasi dialog sebelum menghapus entri buku.
