@@ -68,16 +68,6 @@ Cara menambahkan buku baru
 3. Klik tombol simpan/tambah.
 4. Data buku akan otomatis muncul di **BookList** dan tersimpan di LocalStorage.
 
-Catatan pengembangan dan saran
-- Menambahkan fitur pencarian buku berbasis kata kunci judul/penulis secara real-time.
-- Menambahkan konfirmasi dialog sebelum menghapus entri buku.
-- Mengintegrasikan dengan eksternal API (seperti Google Books API) untuk pencarian metadata buku otomatis.
-
-Kontak
-Jika ada pertanyaan tentang proyek ini, hubungi Dela Puspita Sari (NIM: 123140080).
-
----
-
 Ringkasan Halaman
 
 Home
@@ -85,3 +75,25 @@ Halaman utama yang berisi form penambahan buku, filter, serta daftar seluruh kol
 
 Stats
 Halaman statistik yang menyajikan visualisasi/ringkasan data koleksi buku pengguna.
+
+Lampiran Tangkapan Layar (Screenshot)
+
+1. Tampilan Halaman Utama (Home)
+![Halaman Utama](docs/screenshots/home.png)
+*Menampilkan formulir pendaftaran buku baru, opsi filter/pencarian, dan daftar koleksi buku.*
+
+2. Tampilan Halaman Statistik (Stats)
+![Halaman Statistik](docs/screenshots/stats.png)
+*Menampilkan ringkasan kalkulasi total buku dan status keterbacaan menggunakan custom hook.*
+
+3. Bukti Hasil Pengujian Unit (Unit Testing - Vitest)
+![Hasil Testing Terminal](docs/screenshots/testing.png)
+*Tangkapan layar terminal saat menjalankan `npm run test` dengan seluruh pengujian berstatus PASS.*
+
+Catatan pengembangan dan saran
+- Menambahkan fitur pencarian buku berbasis kata kunci judul/penulis secara real-time.
+- Menambahkan konfirmasi dialog sebelum menghapus entri buku.
+- Mengintegrasikan dengan eksternal API (seperti Google Books API) untuk pencarian metadata buku otomatis.
+
+Kontak
+Jika ada pertanyaan tentang proyek ini, hubungi Dela Puspita Sari (NIM: 123140080).
