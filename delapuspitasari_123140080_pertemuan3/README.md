@@ -39,6 +39,7 @@ src/
 ├── App.test.jsx    # Pengujian unit (Unit Testing)
 ├── main.jsx        # Entry point React & Router
 └── setupTests.js   # Konfigurasi Vitest
+```
 
 ## Cara menjalankan (lokal)
 Prasyarat: Node.js (v16+ recommended) dan npm tersedia.
