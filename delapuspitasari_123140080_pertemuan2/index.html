@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="id" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ITERA Academic Command Center - Dela Puspita Sari</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            itera: {
+              primary: '#0284c7',
+              dark: '#0f172a'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Custom Styling untuk Tailwind CDN -->
+  <style type="text/tailwindcss">
+    @layer components {
+      .form-input {
+        @apply w-full px-3 py-2 text-sm border border-slate-300 dark:border-slate-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 dark:bg-slate-700 dark:text-slate-100 transition;
+      }
+      .btn-primary {
+        @apply flex-1 bg-sky-600 hover:bg-sky-700 active:bg-sky-800 text-white font-semibold py-2 px-4 rounded-xl transition duration-200 text-sm shadow-md hover:shadow-lg active:scale-95 cursor-pointer text-center;
+      }
+      .btn-secondary {
+        @apply bg-slate-200 dark:bg-slate-700 hover:bg-red-500 hover:text-white dark:hover:bg-red-600 text-slate-700 dark:text-slate-200 font-semibold py-2 px-4 rounded-xl text-sm transition duration-200 shadow-sm active:scale-95 cursor-pointer text-center;
+      }
+      .task-filter-btn {
+        @apply px-3 py-1 rounded-lg text-slate-600 dark:text-slate-300 hover:text-sky-600 transition font-medium cursor-pointer;
+      }
+      .filter-active {
+        @apply bg-white dark:bg-slate-800 text-sky-600 dark:text-sky-400 shadow-sm font-bold;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-100 min-h-screen transition-colors duration-300 p-4 md:p-8">
+  <div class="max-w-7xl mx-auto space-y-6">
+
+    <!-- Header & Profile Banner -->
+    <header class="grid grid-cols-1 lg:grid-cols-4 gap-4">
+      <div class="lg:col-span-3 bg-gradient-to-r from-sky-600 to-indigo-700 dark:from-slate-800 dark:to-indigo-950 text-white p-6 rounded-2xl shadow-lg flex flex-col justify-between">
+        <div class="flex justify-between items-start">
+          <div>
+            <span class="text-xs font-semibold tracking-wider uppercase opacity-80">Dashboard Akademik Mahasiswa</span>
+            <h1 class="text-2xl md:text-3xl font-bold mt-1">Dela Puspita Sari 👋</h1>
+            <p class="text-xs text-sky-200 mt-1">NIM: 123140080 | Teknik Informatika ITERA</p>
+          </div>
+          <button id="themeToggle" class="p-2.5 bg-white/10 hover:bg-white/20 rounded-xl transition text-xl backdrop-blur-sm cursor-pointer" title="Ubah Tema">
+            🌙
+          </button>
+        </div>
+        <div id="quoteContainer" class="mt-4 italic text-sm text-sky-100 border-l-2 border-sky-300 pl-3">
+          Memuat kutipan motivasi...
+        </div>
+      </div>
+
+      <!-- Live Weather Widget (ITERA) -->
+      <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-md border border-slate-200 dark:border-slate-700 flex flex-col justify-between">
+        <div class="flex justify-between items-center">
+          <span class="text-xs font-bold text-slate-400 dark:text-slate-400 uppercase tracking-wider">Cuaca Kampus</span>
+          <span class="text-xs text-slate-400">Lampung Selatan</span>
+        </div>
+        <div id="weatherContainer" class="my-2">
+          <p class="text-slate-400 text-sm">Mengambil data cuaca...</p>
+        </div>
+        <span class="text-[10px] text-slate-400">API Real-time: Open-Meteo</span>
+      </div>
+    </header>
+
+    <!-- Progress Indicator & Search Bar -->
+    <section class="bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-md border border-slate-200 dark:border-slate-700 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="w-full md:w-1/2 flex items-center gap-3">
+        <div class="flex-1 bg-slate-100 dark:bg-slate-700 h-3 rounded-full overflow-hidden">
+          <div id="progressBar" class="bg-sky-500 h-full w-0 transition-all duration-500"></div>
+        </div>
+        <span id="progressText" class="text-xs font-bold text-slate-600 dark:text-slate-300 shrink-0">0% Selesai</span>
+      </div>
+
+      <div class="w-full md:w-1/2 flex gap-2">
+        <input type="text" id="searchInput" placeholder="🔍 Cari tugas, jadwal, atau catatan..." 
+          class="w-full px-4 py-2 text-sm rounded-xl border border-slate-300 dark:border-slate-600 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-500">
+      </div>
+    </section>
+
+    <!-- Main Content Workspace -->
+    <main class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+      <!-- Form Panel (Kiri) -->
+      <section class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-md border border-slate-200 dark:border-slate-700 h-fit space-y-4">
+        <!-- Form Selector Tabs -->
+        <div class="flex border-b border-slate-200 dark:border-slate-700 text-xs font-bold">
+          <button id="tabTaskForm" class="flex-1 py-2 text-sky-600 border-b-2 border-sky-600 cursor-pointer">Tugas</button>
+          <button id="tabScheduleForm" class="flex-1 py-2 text-slate-400 hover:text-slate-600 cursor-pointer">Jadwal</button>
+          <button id="tabNoteForm" class="flex-1 py-2 text-slate-400 hover:text-slate-600 cursor-pointer">Catatan</button>
+        </div>
+
+        <!-- Form Task -->
+        <form id="taskForm" class="space-y-3">
+          <input type="hidden" id="taskId">
+          <div>
+            <label class="block text-xs font-semibold mb-1">Judul Tugas / Matkul</label>
+            <input type="text" id="taskTitle" required placeholder="Contoh: Laporan Praktikum Pemweb" class="form-input">
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="block text-xs font-semibold mb-1">Kategori</label>
+              <select id="taskCategory" class="form-input">
+                <option value="Praktikum">Praktikum</option>
+                <option value="Tugas Besar">Tugas Besar</option>
+                <option value="Kuis">Kuis</option>
+                <option value="Ujian">Ujian</option>
+                <option value="Lainnya">Lainnya</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold mb-1">Prioritas</label>
+              <select id="taskPriority" class="form-input">
+                <option value="Tinggi">🔴 Tinggi</option>
+                <option value="Sedang" selected>🟡 Sedang</option>
+                <option value="Rendah">🟢 Rendah</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold mb-1">Deadline</label>
+            <input type="date" id="taskDeadline" required class="form-input">
+          </div>
+          <div class="flex gap-2 pt-2 items-center">
+            <button type="submit" id="taskSubmitBtn" class="btn-primary">Simpan Tugas</button>
+            <button type="button" id="taskCancelBtn" class="btn-secondary hidden">Batal</button>
+          </div>
+        </form>
+
+        <!-- Form Schedule -->
+        <form id="scheduleForm" class="space-y-3 hidden">
+          <div>
+            <label class="block text-xs font-semibold mb-1">Mata Kuliah</label>
+            <input type="text" id="schedTitle" required placeholder="Contoh: Pemrograman Web" class="form-input">
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="block text-xs font-semibold mb-1">Hari</label>
+              <select id="schedDay" class="form-input">
+                <option value="Senin">Senin</option>
+                <option value="Selasa">Selasa</option>
+                <option value="Rabu">Rabu</option>
+                <option value="Kamis">Kamis</option>
+                <option value="Jumat">Jumat</option>
+                <option value="Sabtu">Sabtu</option>
+                <option value="Minggu">Minggu</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold mb-1">Metode</label>
+              <select id="schedMode" class="form-input">
+                <option value="Luring">🏫 Luring</option>
+                <option value="Daring">💻 Daring</option>
+              </select>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="block text-xs font-semibold mb-1">Jam Kuliah</label>
+              <input type="text" id="schedTime" required placeholder="08:00 - 10:00" class="form-input">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold mb-1">Ruangan / Link</label>
+              <input type="text" id="schedRoom" required placeholder="GKU 1 / Zoom" class="form-input">
+            </div>
+          </div>
+          <button type="submit" class="btn-primary">Tambah Jadwal</button>
+        </form>
+
+        <!-- Form Note -->
+        <form id="noteForm" class="space-y-3 hidden">
+          <div>
+            <label class="block text-xs font-semibold mb-1">Judul Catatan</label>
+            <input type="text" id="noteTitle" required placeholder="Ide Proyek Akhir" class="form-input">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold mb-1">Isi Catatan</label>
+            <textarea id="noteContent" rows="3" required placeholder="Tuliskan ide atau rangkuman..." class="form-input"></textarea>
+          </div>
+          <button type="submit" class="btn-primary">Simpan Catatan</button>
+        </form>
+      </section>
+
+      <!-- Displays Area (Kanan) -->
+      <section class="lg:col-span-2 space-y-6">
+        
+        <!-- Module 1: Daftar Tugas -->
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-md border border-slate-200 dark:border-slate-700">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-4">
+            <div>
+              <h2 class="text-lg font-bold">📋 Daftar Tugas Akademik</h2>
+              <p id="taskStats" class="text-xs text-slate-400">Memuat statistik...</p>
+            </div>
+            
+            <div class="flex items-center gap-2">
+              <select id="sortTasks" class="text-xs p-1.5 rounded-lg border border-slate-300 dark:border-slate-600 dark:bg-slate-700">
+                <option value="deadline">Urut: Deadline</option>
+                <option value="priority">Urut: Prioritas</option>
+              </select>
+              <div class="flex bg-slate-100 dark:bg-slate-700 p-1 rounded-lg text-xs font-medium">
+                <button data-filter="all" class="task-filter-btn filter-active">Semua</button>
+                <button data-filter="active" class="task-filter-btn">Aktif</button>
+                <button data-filter="completed" class="task-filter-btn">Selesai</button>
+              </div>
+            </div>
+          </div>
+          <div id="taskList" class="space-y-3"></div>
+        </div>
+
+        <!-- Module 2 & 3: Grid Jadwal & Catatan -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <!-- Module 2: Jadwal Kuliah -->
+          <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-md border border-slate-200 dark:border-slate-700">
+            <h2 class="text-md font-bold mb-3">📅 Jadwal Kuliah</h2>
+            <div id="scheduleList" class="space-y-2"></div>
+          </div>
+
+          <!-- Module 3: Catatan Cepat -->
+          <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-md border border-slate-200 dark:border-slate-700">
+            <h2 class="text-md font-bold mb-3">🗒️ Catatan Cepat</h2>
+            <div id="noteList" class="space-y-2"></div>
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
