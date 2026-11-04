@@ -39,3 +39,5 @@ Jalankan perintah berikut di terminal:
    ```bash
    python main.py
    ```
+
+# Tangkapan Layar Hasil Eksekusi Terminal.
