@@ -41,3 +41,12 @@ Jalankan perintah berikut di terminal:
    ```
 
 # Tangkapan Layar Hasil Eksekusi Terminal.
+
+### Bukti Soal 1
+![Hasil Eksekusi BMI](dokumentasi/bmi.png)   
+
+### Bukti Soal 2
+![Hasil Eksekusi Nilai Mahasiswa](dokumentasi/nilai_mahasiswa.png)   
+
+### Bukti Soal 3
+![Hasil Eksekusi Modul Matematika](dokumentasi/modul_matematika.png)   
