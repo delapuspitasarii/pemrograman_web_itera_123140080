@@ -20,8 +20,8 @@ def tentukan_grade(nilai_akhir: float) -> str:
 def main():
     data_mahasiswa = [
         {
-            "nama": "Ahmad Fadhilah",
-            "nim": "123140001",
+            "nama": "I Kadek Maruta Pracheta",
+            "nim": "123140085",
             "nilai_uts": 85.0,
             "nilai_uas": 90.0,
             "nilai_tugas": 88.0,
@@ -34,21 +34,21 @@ def main():
             "nilai_tugas": 95.0,
         },
         {
-            "nama": "Budi Santoso",
-            "nim": "123140012",
+            "nama": "M.Reyshandi",
+            "nim": "123140037",
             "nilai_uts": 65.0,
             "nilai_uas": 70.0,
             "nilai_tugas": 75.0,
         },
         {
-            "nama": "Siti Rahmawati",
-            "nim": "123140045",
+            "nama": "Ryanda Aditya Irawan",
+            "nim": "123140144",
             "nilai_uts": 55.0,
             "nilai_uas": 60.0,
             "nilai_tugas": 58.0,
         },
         {
-            "nama": "Eko Prasetyo",
+            "nama": "Mekar Cendra Narwastu",
             "nim": "123140099",
             "nilai_uts": 40.0,
             "nilai_uas": 45.0,
