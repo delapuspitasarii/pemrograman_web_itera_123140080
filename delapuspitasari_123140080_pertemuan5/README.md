@@ -110,7 +110,9 @@ Berikut adalah bukti eksekusi fungsionalitas program
 
 3. GUI Interface: Mengubah program dari berbasis terminal (CLI) menjadi berbasis antarmuka grafis menggunakan pustaka seperti Tkinter.
 
+
 ## Author
-Nama Lengkap: Dela Puspita Sari
-NIM: 123140080
-Kelas Praktikum: Praktikum Pemrograman Web (RB)
+
+- **Nama Lengkap:** Dela Puspita Sari
+- **NIM:** 123140080
+- **Kelas Praktikum:** Praktikum Pemrograman Web (RB)
