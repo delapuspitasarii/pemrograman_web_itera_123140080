@@ -68,3 +68,34 @@ Program ini menerapkan proteksi data menggunakan *access modifiers* dan *decorat
 + cari_item(keyword)
 + pinjam_item(item_id)
 + kembalikan_item(item_id)
+```
+
+## Cara Menjalankan Program
+1. Pastikan Python 3.x sudah terinstall di sistem Anda.
+
+2. Buka terminal atau command prompt, lalu arahkan ke direktori folder program ini.
+
+3. Jalankan perintah eksekusi berikut:
+
+```Bash
+python main.py
+```
+## Screenshot Hasil Running Program
+Berikut adalah bukti eksekusi fungsionalitas program 
+- menambahkan item
+- melihat katalog
+- pencarian
+- peminjaman
+- pengembalian
+
+## Tips Pengembangan Lebih Lanjut
+1. Penambahan Fitur: Mengembangkan fungsi untuk menghapus item atau membuat sistem denda keterlambatan.
+
+2. Persistensi Data: Menyimpan katalog ke dalam format file eksternal seperti CSV atau JSON agar data tidak hilang saat program ditutup.
+
+3. GUI Interface: Mengubah program dari berbasis terminal (CLI) menjadi berbasis antarmuka grafis menggunakan pustaka seperti Tkinter.
+
+## Author
+Nama Lengkap: Dela Puspita Sari
+NIM: 123140080
+Kelas Praktikum: Praktikum Pemrograman Web (RB)
