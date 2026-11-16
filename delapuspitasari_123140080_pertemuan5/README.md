@@ -83,19 +83,25 @@ python main.py
 ## Screenshot Hasil Running Program
 Berikut adalah bukti eksekusi fungsionalitas program 
 1. **Menambahkan item**
+
 ![Menambahkan item](bukti_ss/Menambahkan%20item.png)
 
 2. **Melihat katalog**
+
 ![Daftar Item](bukti_ss/menampilkan%20daftar%20item.png)
 
 3. **Pencarian**
+
 ![Mencari Item](bukti_ss/mencari%20item.png)
 
 4. **Peminjaman**
+
 ![Peminjaman](bukti_ss/peminjaman.png)
 
 5. **Pengembalian**
+
 ![Pengembalian](bukti_ss/pengembalian.png)
+
 
 ## Tips Pengembangan Lebih Lanjut
 1. Penambahan Fitur: Mengembangkan fungsi untuk menghapus item atau membuat sistem denda keterlambatan.
