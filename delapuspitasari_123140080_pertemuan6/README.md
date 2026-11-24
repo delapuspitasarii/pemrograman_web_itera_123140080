@@ -3,8 +3,7 @@
 
 - **Nama:** Dela Puspitasari
 - **NIM:** 123140080
-- **Kelas:** RB
-- **Mata Kuliah:** Pemrograman Web (ITERA)
+- **Kelas:**Praktikum PAW (RB)
 - **Topik:** Pertemuan 6 — Backend RESTful API dengan Python Pyramid, SQLAlchemy ORM, Alembic, dan PostgreSQL
 ---
 
